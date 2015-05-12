@@ -2,10 +2,16 @@
 <html>
 <head>
 	<title>Neighbourhood map - Joost Schermers</title>	
+	<link rel="stylesheet" type="text/css" href="styles/style.css"/>
 </head>
 <body>
-	
-    <main class="" data-bind="template: 'search'"></main>
+	<!-- bind template header.tmpl.html -->
+    <header role="banner" class="" data-bind="template: 'header'"></header>
+    
+    <!-- bind map template with map module -->
+    <aside role="complementary" data-bind="template: 'aside'">
+
+    </aside>
 
 	<!-- load require async -->
 	<script type="text/javascript" data-main="scripts/require-config.js" src="scripts/require.js" async></script>
