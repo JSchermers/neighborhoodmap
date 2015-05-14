@@ -14,7 +14,9 @@ requirejs.config({
          **/
         'knockout-template': 'libraries/knockout-template',
         'require-text': 'libraries/require-text',
-        'async': 'libraries/async'
+        'async': 'libraries/async',
+        'knockout-postbox': 'libraries/knockout-postbox',
+        'json': 'libraries/json'
     }
 });
 

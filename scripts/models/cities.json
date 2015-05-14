@@ -1,0 +1,33 @@
+// Data object for mapping search input
+{
+	"name": "myNeighBorHood",
+	"parent": null,
+	"children": [
+		{
+			"name": "Gouda",
+			"lat": 52.011521,
+			"long": 4.710463 
+		},
+		{
+			"name": "Waddinxveen",
+			"lat": 52.031297,
+			"long": 4.659132 
+		},
+		{
+			"name": "Rotterdam",
+			"lat": 51.924420,
+			"long": 4.477733 
+		},
+		{
+			"name": "Utrecht",
+			"lat": 52.090737,
+			"long": 5.121420 
+		},
+		{
+			"name": "Amsterdam",
+			"lat": 52.370216,
+			"long": 4.895168 
+		}
+
+	]
+}
