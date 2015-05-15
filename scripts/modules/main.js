@@ -1,6 +1,6 @@
 define([
-	'conditioner', 
-	'knockout'
+	"conditioner", 
+	"knockout"
 ], function(conditioner, ko) {
 	 return function() {
         console.log('bla');     

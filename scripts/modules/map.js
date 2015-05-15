@@ -1,11 +1,9 @@
 define([
-	'conditioner', 
-	'knockout',
-	// load maps async with async module for knockout
-	'../modules/cities-json'
-], function(conditioner, ko) {
+	"conditioner", 
+	"knockout",
+	"../modules/cities-json"
+], function (conditioner, ko, data) {
 	 return function() {
-	 	var marker = new google.maps();
-       	console.log(marker);
+	 	console.log(data);
     };
 });
