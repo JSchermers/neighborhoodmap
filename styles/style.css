@@ -1,5 +1,16 @@
-html, body,  #map-canvas { 
+html { 
+	height: 100% 
+}
+body { 
 	height: 100%; 
 	margin: 0; 
 	padding: 0;
+}
+
+main, section {
+	height: 100%;
+}
+
+.google-map { 
+	height: 100%;
 }

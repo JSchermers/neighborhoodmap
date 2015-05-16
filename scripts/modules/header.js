@@ -1,6 +1,7 @@
 define([
 	"knockout",
 	"conditioner", 	
+	// insert citiesViewModel as a dependency
 	"../modules/cities-json"
 ], function (ko, conditioner, citiesViewModel) {	 
 
