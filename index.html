@@ -6,15 +6,15 @@
 </head>
 <body>
 	<!-- bind template header.tmpl.html -->
-    <header role="banner" class="" data-bind="template: 'header'"></header>
+    <header role="banner" class="" data-bind="module: 'header'"></header>
     
     <main role="main">
     <!-- bind map template with map module -->
-    <aside role="complementary" data-bind="module: 'map'">
+    <seaction data-bind="module: 'map'">
 
-    </aside>
+    </section>
     </main>
-
+	<footer role="complementary"></footer>
 	<!-- load require async -->
 	<script type="text/javascript" data-main="scripts/require-config" src="scripts/require.js" async></script>
 </body>

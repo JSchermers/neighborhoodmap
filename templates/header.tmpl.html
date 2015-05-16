@@ -1,7 +1,12 @@
 <!-- header  -->
-<form method="get" role="search">
-	<input type="text" placeholder="search city in netherlands" list="cities-list">
+<form method="get" role="search" role="search">
+	<input type="text" placeholder="search city in netherlands" list="cities-list" aria-controls="cities-list" >
 	<button type="submit" value="search" aria-label="search neighbourhood"><span></span></button>
-	<datalist id="cities-list">
+	
+	<datalist id="cities-list" data-bind='foreach: citiesList'>
+		<option data-bind="value: name"></option>
 	</datalist>
+
+	<!-- log json data -->
+	 <pre data-bind="text: ko.toJSON($data, null, 2)"></pre>
 </form>

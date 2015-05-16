@@ -2,8 +2,13 @@ define([
 	"conditioner", 
 	"knockout",
 	"../modules/cities-json"
-], function (conditioner, ko, data) {
-	 return function() {
-	 	console.log(data);
-    };
+], function (conditioner, ko, citiesViewModel) {
+	 	
+	 	var citiesViewModelMap = new citiesViewModel();
+
+	 	return {
+	 		citiesList : citiesViewModelMap.citiesList()
+	 	};
+	 	
+   
 });
