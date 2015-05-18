@@ -7,7 +7,7 @@ define([
         //The data object will be the API response for the
         //JSONP data call.
        	
-       	// create opbject for google maps
+       	// create observable object
         var City = function (data) {
     		this.name = ko.observable(data.name);
     		this.lat = ko.observable(data.lat);

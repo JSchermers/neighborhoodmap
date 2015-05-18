@@ -5,11 +5,24 @@ define([
 	"../modules/cities-json"
 ], function (ko, conditioner, citiesViewModel) {	 
 
-  	 	var citiesViewModelMap = new citiesViewModel();
+  	 	var citiesViewModelMap = citiesViewModel;
 
-  	 	console.log(citiesViewModelMap.citiesList());
+  	 	// create new extended object
+  	 	var headerViewModel = function () {
+			var self = this;
+			self.cityName = ko.observable();
+			
+			self.sendCity = function () {
+				var name = self.cityName();
+				console.log(name);
 
-	 	return {
-	 		citiesList : citiesViewModelMap.citiesList()
-	 	};
+				// clear input
+				self.cityName("");
+			}; 
+ 			// extend citiesviewmodelMap object
+ 			citiesViewModelMap.call(self);
+  	 	};  	 	
+
+	 	return headerViewModel;
+	
 });

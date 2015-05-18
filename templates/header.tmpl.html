@@ -1,14 +1,14 @@
 <!-- header  -->
 <!-- search cities -->
 <h1>The NeighborHood map by Joost Schermers</h1>
-<form method="post" role="search" role="search">
-	<input type="text" placeholder="search city in netherlands" list="cities-list" aria-controls="cities-list" />
+<!-- use submit to send the city -->
+<form method="post" role="search" role="search" data-bind="submit: sendCity">
+	<input type="text" list="cities-list" aria-controls="cities-list" data-bind="value: cityName" placeholder="find city" />
 	<button type="submit" aria-label="search neighbourhood"><span></span></button>
 	<!-- autocomplete -->
 	<datalist id="cities-list" data-bind='foreach: citiesList'>
 		<option data-bind="value: name"></option>
 	</datalist>
-
 	<!-- log json data -->
 	<!-- <pre data-bind="text: ko.toJSON($data, null, 2)"></pre> -->
 </form>
