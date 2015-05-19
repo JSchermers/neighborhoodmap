@@ -1,16 +1,20 @@
 define([
-	"conditioner", 
 	"knockout",
+	"conditioner", 	
 	// insert citiesviewmodel as dependency
-	"../modules/cities-json",
+	"../modules/cities",
 	// point object
 	"../modules/mappoint",
 	// make async call to google maps
 	"async!http://maps.google.com/maps/api/js?sensor=true"
-], function (conditioner, ko, citiesViewModel, mapPoint) {
+], function (ko, conditioner, citiesViewModel, mapPoint) {
 	 	
 	 	// city viewmodel
-	 	var citiesViewModelMap = new citiesViewModel();
+	 	var citiesViewModelMap = citiesViewModel;
+
+	 	console.log(citiesViewModelMap.cityName.subscribe(function(newValue) {
+    		alert("The person's new name is " + newValue);
+		}));
 
 	 	// point function for adding points to observable array
 	 	var Point = mapPoint;	 	

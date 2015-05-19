@@ -2,26 +2,18 @@ define([
 	"knockout",
 	"conditioner", 	
 	// insert citiesViewModel as a dependency
-	"../modules/cities-json"
+	"../modules/cities"
 ], function (ko, conditioner, citiesViewModel) {	 
 
-  	 	var citiesViewModelMap = citiesViewModel;
+  	 	var headerViewModel = citiesViewModel;
 
-  	 	// create new extended object
-  	 	var headerViewModel = function () {
-			var self = this;
-			self.cityName = ko.observable();
-			
-			self.sendCity = function () {
-				var name = self.cityName();
-				console.log(name);
-
-				// clear input
-				self.cityName("");
-			}; 
+  	 	// could extend the viewmodel here
+  		
+  		/* 	var headerViewModel = function () {
+		
  			// extend citiesviewmodelMap object
  			citiesViewModelMap.call(self);
-  	 	};  	 	
+  	 	}; */ 	 	
 
 	 	return headerViewModel;
 	

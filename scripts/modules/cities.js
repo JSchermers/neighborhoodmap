@@ -14,16 +14,22 @@ define([
     		this.lon = ko.observable(data.lon);
         };
 
-        // viewmodel module
-    	var citiesViewModel = function () {
-    		var self = this;
-    		this.citiesList = ko.observableArray([]);
+        // viewmodel module literal while no new instances are needed, just return the object
+    	var citiesViewModel = {
+    		citiesList : ko.observableArray([]),
+			cityName : ko.observable("Gouda")		
+		};
 
-    		data.children.forEach(function (city){
-				self.citiesList.push(new City(city));
-    		});
+		citiesViewModel.sendCity = function sendCity () {
+				var city = citiesViewModel.cityName();
+				citiesViewModel.cityName("");
+				return city;			
+		}; 
 
-    	};
+		data.children.forEach(function (city){
+				citiesViewModel.citiesList.push(new City(city));
+		});
+
     	return citiesViewModel;
     }
 );
