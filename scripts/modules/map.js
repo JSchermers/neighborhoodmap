@@ -12,17 +12,14 @@ define([
 	 	// city viewmodel
 	 	var citiesViewModelMap = citiesViewModel;
 
-	 	console.log(citiesViewModelMap.cityName.subscribe(function(newValue) {
-    		alert("The person's new name is " + newValue);
-		}));
-
 	 	// point function for adding points to observable array
 	 	var Point = mapPoint;	 	
 
 	 	// custom binding for handling a google map
 	 	ko.bindingHandlers.googlemap = {
 		    init: function (element, valueAccessor, allBindingsAccessor, viewModel) {
-		           	var mapObj = ko.utils.unwrapObservable(valueAccessor());
+		    		var self = this;
+		           	self.mapObj = ko.utils.unwrapObservable(valueAccessor());
 			        var latLng = new google.maps.LatLng(
 			            ko.utils.unwrapObservable(mapObj.lat),
 			            ko.utils.unwrapObservable(mapObj.lng));
@@ -31,22 +28,45 @@ define([
 			                          mapTypeId: google.maps.MapTypeId.ROADMAP};
 
                   	// create new map
-			        mapObj.googleMap = new google.maps.Map(element, mapOptions);			        
+			        mapObj.googleMap = new google.maps.Map(element, mapOptions);
 
-		        	// use citiesViewModel for the citiesList
-			        var citiesList = citiesViewModelMap.citiesList();
+			        // use citiesViewModel for the citiesList
+			        self.citiesList = citiesViewModelMap.citiesList();
 
 			        // create new observableArray
-					self.googleMapPoints = ko.observableArray([]);
-					
+					self.googleMapPoints = ko.observableArray([]);			        
+
 					// add new Points + markers to observableArray	
-					citiesList.forEach(function (city){
-						self.googleMapPoints.push(new Point(city.name(), city.lat(), city.lon(), mapObj.googleMap));
+					citiesList.forEach(function (city) {
+						self.googleMapPoints.push(new Point(city.name(), city.lat(), city.lon(), self.mapObj.googleMap));
 					});
-					
+			        				
 					// stop ko double dependency binding
 			        return { controlsDescendantBindings: true };
-		        
+		    },
+
+		    update : function () {
+		    	// check if there's an update on the cityName
+			        citiesViewModelMap.cityName.subscribe(function (newValue) {
+			    		if (newValue) {
+			    			// loop troough citiesList
+			    			self.citiesList.forEach(function (city) {
+			    				// check current value
+		    					if (city.name() === newValue){
+		    						// remove all existing points on the map
+    								self.googleMapPoints().forEach(function (point) {
+										point.setMarker(); 
+
+										// empty existing array
+										self.googleMapPoints([]);					
+	    							});
+    							// set new google marker object in array
+								self.googleMapPoints.push(new Point(city.name(), city.lat(), city.lon(), mapObj.googleMap));
+								
+								}
+							});
+			    		}
+			    });
 		    }
 		};
 

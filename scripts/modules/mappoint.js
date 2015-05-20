@@ -13,7 +13,7 @@ define([
             this.name = name;
             this.lat = ko.observable(lat);
             this.lon = ko.observable(lon);
-
+            
             var marker = new google.maps.Marker({
                 position: new google.maps.LatLng(lat, lon),
                 title: name,
@@ -21,6 +21,12 @@ define([
                 animation: google.maps.Animation.DROP,
                 draggable: true
             });
+
+            // remove marker objects
+            self.setMarker = function () {
+                marker.setMap(null);
+                marker = null;
+            };
 
             //if you need the poition while dragging
             google.maps.event.addListener(marker, 'drag', function() {
@@ -34,7 +40,7 @@ define([
                 var pos = marker.getPosition();
                 this.lat(pos.lat());
                 this.lon(pos.lng());
-            }.bind(this));
+            }.bind(this));           
         }
 
         return Point;

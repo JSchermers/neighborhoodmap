@@ -31,6 +31,9 @@ define([
 		});
 
     	return citiesViewModel;
+    },
+    function (error) {
+		alert (error);
     }
 );
 

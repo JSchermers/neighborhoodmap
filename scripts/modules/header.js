@@ -7,7 +7,7 @@ define([
 
   	 	var headerViewModel = citiesViewModel;
 
-  	 	// could extend the viewmodel here
+  	 	// could extend the viewmodel here, just return header modal to be compatible with the view template
   		
   		/* 	var headerViewModel = function () {
 		
