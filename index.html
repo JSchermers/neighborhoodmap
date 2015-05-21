@@ -6,14 +6,20 @@
 	<link rel="stylesheet" type="text/css" href="styles/style.css"/>
 </head>
 <body>
-	<!-- bind template header.tmpl.html -->
+	<!-- bind header template with header module -->
     <header role="banner" class="" data-bind="module: 'header'"></header>
     
     <main role="main">
-    <!-- bind map template with map module -->
-    <section data-bind="module: 'map'">
+		<!-- data bind wikepedia template with wikepedia module -->
+		<section data-bind="module: 'wikipedia'"> 
 
-    </section>
+			</section>
+
+	    <!-- bind map template with map module -->
+	    <section data-bind="module: 'map'">
+	    	
+	    	</section>
+
     </main>
 	<footer role="contentinfo"></footer>
 	<!-- load require async -->

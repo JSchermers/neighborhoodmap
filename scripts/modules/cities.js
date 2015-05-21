@@ -17,7 +17,7 @@ define([
         // viewmodel module literal while no new instances are needed, just return the object
     	var citiesViewModel = {
     		citiesList : ko.observableArray([]),
-			cityName : ko.observable("Gouda")		
+			cityName : ko.observable()		
 		};
 
 		citiesViewModel.sendCity = function sendCity () {

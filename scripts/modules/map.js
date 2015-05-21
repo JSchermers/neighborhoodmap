@@ -13,7 +13,20 @@ define([
 	 	var citiesViewModelMap = citiesViewModel;
 
 	 	// point function for adding points to observable array
-	 	var Point = mapPoint;	 	
+	 	var Point = mapPoint;	
+
+	 	var markerID = {
+
+ 			markerid : 0,
+	    	
+	    	setMarkerId : function () {
+	    		this.markerid++;
+	    	},
+
+	    	getMarkerId : function () {
+	    		return this.markerid;
+	    	}
+ 		};
 
 	 	// custom binding for handling a google map
 	 	ko.bindingHandlers.googlemap = {
@@ -36,9 +49,16 @@ define([
 			        // create new observableArray
 					self.googleMapPoints = ko.observableArray([]);			        
 
-					// add new Points + markers to observableArray	
+					// add Points + markers to observableArray and show markers	
 					citiesList.forEach(function (city) {
-						self.googleMapPoints.push(new Point(city.name(), city.lat(), city.lon(), self.mapObj.googleMap));
+						
+						// get marker Id
+						var markerId = markerID.getMarkerId();
+						
+						self.googleMapPoints.push(new Point(city.name(), city.lat(), city.lon(), self.mapObj.googleMap, markerId));
+						
+						// update markerId
+						markerID.setMarkerId();
 					});
 			        				
 					// stop ko double dependency binding
@@ -46,28 +66,40 @@ define([
 		    },
 
 		    update : function () {
+		    	
 		    	// check if there's an update on the cityName
 			        citiesViewModelMap.cityName.subscribe(function (newValue) {
 			    		if (newValue) {
+			    			
 			    			// loop troough citiesList
 			    			self.citiesList.forEach(function (city) {
+			    				
 			    				// check current value
 		    					if (city.name() === newValue){
+
+		    						var markerId = markerID.getMarkerId();
 		    						// remove all existing points on the map
     								self.googleMapPoints().forEach(function (point) {
-										point.setMarker(); 
+
+										// remove listeners
+										var map = point.getMap();
+										google.maps.event.clearListeners(map, 'click');
+
+										// remove markers
+										point.removeMarker(); 
 
 										// empty existing array
 										self.googleMapPoints([]);					
 	    							});
     							// set new google marker object in array
-								self.googleMapPoints.push(new Point(city.name(), city.lat(), city.lon(), mapObj.googleMap));
+								self.googleMapPoints.push(new Point(city.name(), city.lat(), city.lon(), mapObj.googleMap, markerId));
 								
 								}
 							});
 			    		}
 			    });
 		    }
+		    
 		};
 
 	 	// viewModel to be used by google map

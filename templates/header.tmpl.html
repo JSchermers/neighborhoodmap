@@ -3,7 +3,8 @@
 <h1>The NeighborHood map by Joost Schermers</h1>
 <!-- use submit to send the city -->
 <form method="post" role="search" role="search" data-bind="submit: sendCity">
-	<input type="text" list="cities-list" aria-controls="cities-list" data-bind="value: cityName" placeholder="find city" />
+
+	<label>Type city name in the input box and select a city<input type="text" list="cities-list" aria-controls="cities-list" data-bind="value: cityName" placeholder="find city" /></label>
 	<button type="submit" aria-label="search neighbourhood"><span></span></button>
 	<!-- autocomplete -->
 	<datalist id="cities-list" data-bind='foreach: citiesList'>
@@ -12,5 +13,3 @@
 	<!-- log json data -->
 	<!-- <pre data-bind="text: ko.toJSON($data, null, 2)"></pre> -->
 </form>
-
-<div data-bind="text: cityName"></div>
