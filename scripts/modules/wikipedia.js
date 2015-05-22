@@ -1,18 +1,14 @@
 define([
 	"knockout",
-	// mappoint needs to be here first
-	"../modules/mappoint",
-	// make async call to wikipedia
-	"async!http://maps.google.com/maps/api/js?sensor=true"
-], function (ko) {
+	"../modules/api-call-wikipedia"
+], function (ko, result) {
 
-	// subscribe to custom event
-	document.addEventListener("getTitle", getWikipedia, false);
-
-	// call function
-	function getWikipedia (e) {
-		console.log(e.detail.title);
-	}
+	// subscribe to change in result model
+	result.cityname.subscribe(function (newValue) {
+		if (newValue) {
+			console.log(result.citydata());
+		}
+	});
 
 	// viewmodel
 	var WikiPediaViewModel = function () {
@@ -21,7 +17,6 @@ define([
 		self.getTitle = function () {
 			return self.title;
 		};
-
 	};
 
 	return WikiPediaViewModel;

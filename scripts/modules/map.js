@@ -15,14 +15,14 @@ define([
 	 	// point function for adding points to observable array
 	 	var Point = mapPoint;	
 
+	 	// marker Id object for storing the current id of the marker
 	 	var markerID = {
-
  			markerid : 0,
-	    	
+	    	// method for setting the markerid
 	    	setMarkerId : function () {
 	    		this.markerid++;
 	    	},
-
+    		// method for calling the markerid
 	    	getMarkerId : function () {
 	    		return this.markerid;
 	    	}
@@ -55,6 +55,7 @@ define([
 						// get marker Id
 						var markerId = markerID.getMarkerId();
 						
+						// create new markers on the map
 						self.googleMapPoints.push(new Point(city.name(), city.lat(), city.lon(), self.mapObj.googleMap, markerId));
 						
 						// update markerId

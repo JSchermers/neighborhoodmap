@@ -15,12 +15,13 @@ requirejs.config({
         "knockout-template": "libraries/knockout-template",
         "require-text": "libraries/require-text",
         "async": "libraries/async",
-        "knockout-postbox": "libraries/knockout-postbox",
-        "json": "libraries/json"
+        "json": "libraries/json",
+        "q": "libraries/q",
+        "q-xhr": "libraries/q-xhr"
     }
 });
 
-require(["knockout", "modules/main","conditioner", "knockout-template"], function (ko, App, conditioner) {
+require(["knockout", "modules/main","conditioner", "knockout-template", "q", "q-xhr"], function (ko, App, conditioner) {
     /* look for modules here */
     ko.bindingHandlers.module.baseDir = "modules";
 
