@@ -38,7 +38,7 @@ define([
                 return map;
             };
 
-            //if you need the poition while dragging
+    /*        //if you need the poition while dragging
             google.maps.event.addListener(marker, 'drag', function() {
                 var pos = marker.getPosition();
                 this.lat(pos.lat());
@@ -56,7 +56,7 @@ define([
                 var pos = marker.getPosition();
                 this.lat(pos.lat());
                 this.lon(pos.lng());
-            }.bind(this));   
+            }.bind(this));   */
 
             google.maps.event.addListener(marker, 'click', function() {
                 // get current clicked title and send it to wikipedia
@@ -72,12 +72,8 @@ define([
                     cancelable: true
                 });
 
-                console.log(markerId);
-
                 // dispatch custom event, to be listened to by Wikipedia Model
-                document.getElementById(markerId).dispatchEvent(newCity);
-
-            
+                document.getElementById(markerId).dispatchEvent(newCity);            
             }.bind(this));         
         }
 

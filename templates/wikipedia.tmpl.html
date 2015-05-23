@@ -1,5 +1,7 @@
 <!-- add myMap to custom knockout binding handler -->
 <h2>Wikipedia information</h2>
-<div class="wikipedia" data-bind="text: title">
-
-</div>
+<ul data-bind="foreach: cityResults">
+	<li>
+		<a data-bind="attr: { href: url, title: title}"><span data-bind="text: title"></span></a>
+	</li>
+</ul>

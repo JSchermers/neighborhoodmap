@@ -18,7 +18,11 @@ define([
 
 	// call function
 	function getWikipedia (e) {
+
+		// listen to custom event
 		city = e.detail.title;
+
+		// check city has value
 		if (city !== '') {
 			sentJSONPRequest(city);
 		}
@@ -28,26 +32,36 @@ define([
 	function jsonp(url, callback) {
 	    var callbackName = 'jsonp_callback_' + Math.round(100000 * Math.random());
 	    
+	    // create callback and delete it
 	    window[callbackName] = function(data) {
 	        delete window[callbackName];
 	        document.body.removeChild(script);
 	        callback(data);
 	    };
 
+	    // add script
 	    var script = document.createElement('script');
 	    script.src = url + (url.indexOf('?') >= 0 ? '&' : '?') + 'callback=' + callbackName;
+
+	    // simple error handling (works in firefox and chrome)
+    	window.onerror = function (errorMsg, url, lineNumber) {
+	   		alert('Error: ' + errorMsg + ' Script: ' + url + ' Line: ' + lineNumber);
+		};
+
 	    document.body.appendChild(script);
 	}
 
 	// set api url
 	var sentJSONPRequest = function (city) {
+		
 		// set url for jsonp request
-		var url = 'http://en.wikipedia.org/w/api.php?action=opensearch&search=' + city + '&format=json&callback=?'
+		var url = 'http://en.wikipedia.org/w/api.php?action=opensearch&search=' + city + '&format=json&callback=?';
+		
 		// call jsonp request		
 		jsonp(url, function(data) {
 
 			// fill result with wikipedia object
-			result.citydata([data]);
+			result.citydata([data[1]]);
 
 			// use change in city for observable
 			result.cityname(data[0]); 			
