@@ -1,11 +1,14 @@
 <!-- header  -->
 <!-- search cities -->
-<h1>The NeighborHood map by Joost Schermers</h1>
+<h1>My Netherlands</h1>
 <!-- use submit to send the city -->
 <form method="post" role="search" role="search" data-bind="submit: sendCity">
-
-	<label>Type city name in the input box and select a city<input type="text" list="cities-list" aria-controls="cities-list" data-bind="value: cityName" placeholder="find city" /></label>
-	<button type="submit" aria-label="search neighbourhood"><span></span></button>
+		<label for="search-input">Select a city</label>
+			<div class="search-box">		
+				<input type="text" id="search-input" list="cities-list" aria-describedby="cityname-hint" aria-controls="cities-list" data-bind="value: cityName" placeholder="find city" />
+				<div role="tooltip" id="cityname-hint">for displaying on google map and connecting to wikipedia</div>	
+			<button type="submit" aria-label="search neighbourhood"><span></span></button>
+		</div>
 	<!-- autocomplete -->
 	<datalist id="cities-list" data-bind='foreach: citiesList'>
 		<option data-bind="value: name"></option>

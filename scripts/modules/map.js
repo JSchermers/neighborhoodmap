@@ -15,19 +15,6 @@ define([
 	 	// point function for adding points to observable array
 	 	var Point = mapPoint;	
 
-	 	// marker Id object for storing the current id of the marker
-	 	var markerID = {
- 			markerid : 0,
-	    	// method for setting the markerid
-	    	setMarkerId : function () {
-	    		this.markerid++;
-	    	},
-    		// method for calling the markerid
-	    	getMarkerId : function () {
-	    		return this.markerid;
-	    	}
- 		};
-
 	 	// custom binding for handling a google map
 	 	ko.bindingHandlers.googlemap = {
 		    init: function (element, valueAccessor, allBindingsAccessor, viewModel) {
@@ -36,9 +23,16 @@ define([
 			        var latLng = new google.maps.LatLng(
 			            ko.utils.unwrapObservable(mapObj.lat),
 			            ko.utils.unwrapObservable(mapObj.lng));
-			        var mapOptions = { center: latLng,
-			                          zoom: 8, 
-			                          mapTypeId: google.maps.MapTypeId.ROADMAP};
+			        //set mapoptions
+			        var mapOptions = { 
+	        			center: latLng,
+                      	zoom: 7, 
+                      	mapTypeId: google.maps.MapTypeId.ROADMAP,
+            			draggable: false,
+			            scrollwheel: false,
+			            disableDoubleClickZoom: true,
+			            zoomControl: false
+			        };
 
                   	// create new map
 			        mapObj.googleMap = new google.maps.Map(element, mapOptions);
@@ -52,14 +46,9 @@ define([
 					// add Points + markers to observableArray and show markers	
 					citiesList.forEach(function (city) {
 						
-						// get marker Id
-						var markerId = markerID.getMarkerId();
-						
 						// create new markers on the map
-						self.googleMapPoints.push(new Point(city.name(), city.lat(), city.lon(), self.mapObj.googleMap, markerId));
+						self.googleMapPoints.push(new Point(city.name(), city.lat(), city.lon(), self.mapObj.googleMap));
 						
-						// update markerId
-						markerID.setMarkerId();
 					});
 			        				
 					// stop ko double dependency binding
@@ -78,8 +67,7 @@ define([
 			    				// check current value
 		    					if (city.name() === newValue){
 
-		    						var markerId = markerID.getMarkerId();
-		    						// remove all existing points on the map
+		       						// remove all existing points on the map
     								self.googleMapPoints().forEach(function (point) {
 
 										// remove listeners
@@ -93,7 +81,7 @@ define([
 										self.googleMapPoints([]);					
 	    							});
     							// set new google marker object in array
-								self.googleMapPoints.push(new Point(city.name(), city.lat(), city.lon(), mapObj.googleMap, markerId));
+								self.googleMapPoints.push(new Point(city.name(), city.lat(), city.lon(), mapObj.googleMap));
 								
 								}
 							});
@@ -110,7 +98,7 @@ define([
 	 		// position the of the map (the Netherlands), used in view		
 	 		self.myMap = ko.observable({
 					        	lat: ko.observable(52.5),
-					        	lng: ko.observable(5.75),				        	
+					        	lng: ko.observable(5.65),				        	
 					        });	 
 	 	};
 

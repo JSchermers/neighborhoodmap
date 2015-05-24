@@ -8,7 +8,7 @@ define([
        	
         // found in js fiddle how to create a map with knockout http://jsfiddle.net/t9wcC/
         // Point object for storing cityname , lat, lon + markers with events
-        function Point (name, lat, lon, mapObj, markerId) {
+        function Point (name, lat, lon, mapObj) {
             var self = this;
             this.name = name;
             this.lat = ko.observable(lat);
@@ -19,9 +19,8 @@ define([
                 title: name,
                 map: mapObj,
                 animation: google.maps.Animation.DROP,
-                draggable: true,
-                id: "gmimap" + markerId
-            });
+                draggable: true
+               });
 
             // set id to reference it for adding customEvent
             // marker.set("id", marker.title);
@@ -60,21 +59,16 @@ define([
 
             google.maps.event.addListener(marker, 'click', function() {
                 // get current clicked title and send it to wikipedia
-                var title = marker.title,
-                markerId = marker.id;
+                var title = marker.title;
 
                 //create custom event to subscript to (i could not find any knockout specific way to do so)
-                var newCity = new CustomEvent("getTitle", {
-                    detail: {
-                        title : title,                        
-                    },
-                    bubbles: true,
-                    cancelable: true
+                var newCity = document.createEvent("CustomEvent"); 
+                newCity.initCustomEvent("getTitle", true, true, {
+                        title : title
                 });
-
                 // dispatch custom event, to be listened to by Wikipedia Model
-                document.getElementById(markerId).dispatchEvent(newCity);            
-            }.bind(this));         
+                window.dispatchEvent(newCity); 
+           }.bind(this));         
         }
 
         return Point;

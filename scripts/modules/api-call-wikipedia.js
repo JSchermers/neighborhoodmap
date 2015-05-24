@@ -2,7 +2,7 @@ define([
 	"knockout",
 	// mappoint needs to be here first for addEventListener
 	"../modules/mappoint",
-], function (ko, Q) {
+], function (ko) {
 
 	// create result object
 	var result = {
@@ -11,7 +11,7 @@ define([
 	};
 
 	// subscribe to custom event
-	document.addEventListener("getTitle", getWikipedia, false);
+	window.addEventListener("getTitle", getWikipedia, false);
 
 	// use for jsonp call to wikipedia
 	var city ='';
