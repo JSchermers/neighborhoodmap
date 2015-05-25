@@ -14,11 +14,14 @@
 	    <section data-bind="module: 'map'">
 	    	
 	    	</section>
-
+		
+		<!-- could not get conditioner working inside knockout templ -->
+		<div data-module="ui/ScrollToElement" data-options="media:{(min-width:70em)} and element:{visible}">
 		<!-- data bind wikepedia template with wikepedia module -->
-		<section data-bind="module: 'wikipedia'"> 
+			<section data-bind="module: 'wikipedia'"> 
 
-			</section>
+				</section>
+		</div>
 
     </main>
 	<footer role="contentinfo"></footer>

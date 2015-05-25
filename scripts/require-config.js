@@ -16,12 +16,10 @@ requirejs.config({
         "require-text": "libraries/require-text",
         "async": "libraries/async",
         "json": "libraries/json",
-        "q": "libraries/q",
-        "q-xhr": "libraries/q-xhr"
     }
 });
 
-require(["knockout", "modules/main","conditioner", "knockout-template", "q", "q-xhr"], function (ko, App, conditioner) {
+require(["knockout", "modules/main","conditioner", "knockout-template"], function (ko, App, conditioner) {
     /* look for modules here */
     ko.bindingHandlers.module.baseDir = "modules";
 
@@ -35,4 +33,7 @@ require(["knockout", "modules/main","conditioner", "knockout-template", "q", "q-
     setTimeout(function () {
         ko.applyBindings(new App());
     }, 0);
+
+    // initialize conditioner
+    conditioner.init();
 });
