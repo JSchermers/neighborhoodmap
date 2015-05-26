@@ -14,17 +14,49 @@ define([
 	window.addEventListener("getTitle", getWikipedia, false);
 
 	// use for jsonp call to wikipedia
-	var city ='';
+	var city ='',
+
+	// oldValue
+	oldValue = '';
 
 	// call function
 	function getWikipedia (e) {
-
+		
 		// listen to custom event
 		city = e.detail.title;
 
-		// check city has value
-		if (city !== '') {
-			sentJSONPRequest(city);
+		// store data object
+		var data = '';
+	
+		// if city equals old value do nothing
+		if (city === oldValue) {
+
+			// do somethin when element is clicked twice
+			console.log("you have previously clicked this " + city + " marker");
+		}
+
+		// if city contains new value
+		else {	
+
+			// check if city is in LocalStorage
+			if (localStorage[city]) {
+
+				// get localstorage item and store it
+				data = JSON.parse(localStorage[city]);
+
+				// populate observables
+				result.citydata([data]);
+				result.cityname(city);
+				
+			}
+
+			else {
+				// if no localstorage, sent request
+				sentJSONPRequest(city);
+			}
+
+			// set city to old value
+			oldValue = city;
 		}
 	}
 
@@ -64,7 +96,14 @@ define([
 			result.citydata([data[1]]);
 
 			// use change in city for observable
-			result.cityname(data[0]); 			
+			result.cityname(data[0]); 	
+
+			// if localstorage support
+			if (window.localStorage) {
+
+				// store city object with data array
+				localStorage[data[0]] = JSON.stringify(data[1]);
+			}		
 
   		});
 	};

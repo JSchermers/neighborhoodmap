@@ -24,3 +24,6 @@ I wanted to keep everything in a modular way. Which i had never done before. I h
 ## TO DO 
 
 * better error handling
+* try r.js
+* use kockout components instead of amd-helper
+* set focus on onclick return to search

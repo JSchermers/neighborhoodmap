@@ -32,8 +32,12 @@ require(["knockout", "modules/main","conditioner", "knockout-template"], functio
 
     setTimeout(function () {
         ko.applyBindings(new App());
-    }, 0);
+        // initialize conditioner
+      }, 0);
 
-    // initialize conditioner
-    conditioner.init();
+    setTimeout(function () {
+        conditioner.init();
+    }, 300);
+
+
 });
