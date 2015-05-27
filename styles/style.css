@@ -125,7 +125,7 @@ input:focus + [role="tooltip"] {
 
 	main > section, main > div[data-processed=true] {
 		float: right;
-		width: 48%;
+		width: 31%;
 		vertical-align: top;
 		text-align: left;
 		margin-right: 2%;

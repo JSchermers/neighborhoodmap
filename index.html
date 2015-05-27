@@ -10,11 +10,16 @@
     <header role="banner" class="" data-bind="module: 'header'"></header>
     
     <main role="main">
+
+		<!-- list containing all the data objects -->
+		<section data-bind="module: 'list'">
+
+			</section>
 	    <!-- bind map template with map module -->
 	    <section data-bind="module: 'map'">
 	    	
 	    	</section>
-		
+
 		<!-- could not get conditioner working inside knockout templ -->
 		<div data-module="ui/ScrollToElement" data-conditions="media:{(min-width:30em)} and element:{was visible}">
 		<!-- data bind wikepedia template with wikepedia module -->

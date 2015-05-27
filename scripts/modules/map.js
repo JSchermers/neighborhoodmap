@@ -1,13 +1,12 @@
 define([
 	"knockout",
-	"conditioner", 	
 	// insert citiesviewmodel as dependency
 	"../modules/cities",
 	// point object
 	"../modules/mappoint",
 	// make async call to google maps
 	"async!http://maps.google.com/maps/api/js?sensor=true"
-], function (ko, conditioner, citiesViewModel, mapPoint) {
+], function (ko, citiesViewModel, mapPoint) {
 	 	
 	 	// city viewmodel
 	 	var citiesViewModelMap = citiesViewModel;
