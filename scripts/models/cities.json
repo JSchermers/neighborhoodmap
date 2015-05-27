@@ -26,6 +26,31 @@
 			"name": "Amsterdam",
 			"lat": 52.370216,
 			"lon": 4.895168 
+		},
+		{
+			"name": "Groningen",
+			"lat": 53.219383,
+			"lon": 6.566502 
+		},
+		{
+			"name": "Eindhoven",
+			"lat": 51.441642,
+			"lon": 5.469722 
+		},
+		{
+			"name": "Almelo",
+			"lat": 52.367027,
+			"lon": 6.668492 
+		},
+		{
+			"name": "Almere",
+			"lat": 52.350785,
+			"lon": 5.264702 
+		},
+		{
+			"name": "Middelburg",
+			"lat": 51.498796,
+			"lon": 3.610998 
 		}
 	]
 }
