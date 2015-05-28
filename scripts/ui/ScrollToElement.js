@@ -3,7 +3,6 @@ define(function () {
     // constructor
     var exports = function (element,options) {      
         this.bindEvents(element);
-        console.log(options);
     };
 
     p = exports.prototype;
@@ -42,8 +41,12 @@ define(function () {
         };
 
 
-    p.bindEvents = function bindEvents (element) {
-        window.addEventListener("getTitle", this.scollTo(element), false);
+    p.bindEvents = function (element) {
+
+        window.addEventListener("getTitle", function () {
+            var el = element;
+            p.scollTo(el);
+        }, false);
     };
 
     return exports;  
