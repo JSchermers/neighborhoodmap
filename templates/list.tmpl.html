@@ -1,11 +1,20 @@
 <!-- add myMap to custom knockout binding handler -->
 <h2>List information</h2>
-<ul data-bind="foreach: list" class="wikipedia-link-list">
-	<li class="wikipedia-link-list__item">
-		<span data-bind="text: name"></span>
-		<span data-bind="text: lat"></span>
-		<span data-bind="text: lon"></span>
-
-	</li>
-</ul>
-
+<a href="#google-map" class="google-map-link" data-bind="visible: googleMapPoints().length > 5">Go to map</a>
+<!-- monitor changes on googleMapPoints -->
+<table class="city-table">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Latitude</th>
+			<th>Longitude</th>
+		</tr>
+	</thead>
+	<tbody data-bind="foreach: googleMapPoints">
+		<tr>
+			<td data-bind="text: name"></td>
+			<td data-bind="text: lat"></td>
+			<td data-bind="text: lon"></td>
+		</tr>
+	</tbody>
+</table>

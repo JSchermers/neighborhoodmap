@@ -17,7 +17,8 @@ define([
         // viewmodel module literal while no new instances are needed, just return the object
     	var citiesViewModel = {
     		citiesList : ko.observableArray([]),
-			cityName : ko.observable()		
+            googleMapPoints : ko.observableArray([]),     
+            cityName : ko.observable(),		
 		};
 
 		citiesViewModel.sendCity = function sendCity () {
@@ -26,6 +27,7 @@ define([
 				return city;			
 		}; 
 
+        // add all cities to citieslist
 		data.children.forEach(function (city){
 				citiesViewModel.citiesList.push(new City(city));
 		});

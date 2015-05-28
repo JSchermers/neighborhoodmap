@@ -35,18 +35,12 @@ define([
 
                   	// create new map
 			        mapObj.googleMap = new google.maps.Map(element, mapOptions);
-
-			        // use citiesViewModel for the citiesList
-			        self.citiesList = citiesViewModelMap.citiesList();
-
-			        // create new observableArray
-					self.googleMapPoints = ko.observableArray([]);			        
-
-					// add Points + markers to observableArray and show markers	
-					citiesList.forEach(function (city) {
+ 
+			        // add Points + markers to observableArray and show markers	
+					citiesViewModelMap.citiesList().forEach(function (city) {
 						
 						// create new markers on the map
-						self.googleMapPoints.push(new Point(city.name(), city.lat(), city.lon(), self.mapObj.googleMap));
+						citiesViewModelMap.googleMapPoints.push(new Point(city.name(), city.lat(), city.lon(), self.mapObj.googleMap));
 						
 					});
 			        				
@@ -61,13 +55,13 @@ define([
 			    		if (newValue) {
 			    			
 			    			// loop troough citiesList
-			    			self.citiesList.forEach(function (city) {
+			    			citiesViewModelMap.citiesList().forEach(function (city) {
 			    				
 			    				// check current value
 		    					if (city.name() === newValue){
 
 		       						// remove all existing points on the map
-    								self.googleMapPoints().forEach(function (point) {
+    								citiesViewModelMap.googleMapPoints().forEach(function (point) {
 
 										// remove listeners
 										var map = point.getMap();
@@ -77,10 +71,10 @@ define([
 										point.removeMarker(); 
 
 										// empty existing array
-										self.googleMapPoints([]);					
+										citiesViewModelMap.googleMapPoints([]);					
 	    							});
     							// set new google marker object in array
-								self.googleMapPoints.push(new Point(city.name(), city.lat(), city.lon(), mapObj.googleMap));
+								citiesViewModelMap.googleMapPoints.push(new Point(city.name(), city.lat(), city.lon(), mapObj.googleMap));
 								
 								}
 							});

@@ -101,12 +101,12 @@ input:focus + [role="tooltip"] {
 	margin: 0 -1em;
 }
 
-.wikipedia-link-list__item {
-	padding: .25em 0;
+.city-table {
+	width: 100%;
 }
 
-.wikipedia-link-list__item > a {
-	display: block;
+.city-table th {
+	text-align: left;
 }
 
 [role=contentinfo] {
@@ -125,7 +125,7 @@ input:focus + [role="tooltip"] {
 
 	main > section, main > div[data-processed=true] {
 		float: right;
-		width: 31%;
+		width: 31.33%;
 		vertical-align: top;
 		text-align: left;
 		margin-right: 2%;
@@ -140,6 +140,10 @@ input:focus + [role="tooltip"] {
 	}
 
 	.return-to-input {
+		display: none;
+	}
+
+	.google-map-link {
 		display: none;
 	}
 }
