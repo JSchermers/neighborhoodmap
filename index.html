@@ -2,6 +2,7 @@
 <html>
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta charset="UTF-8">
 	<title>Neighbourhood map - Joost Schermers</title>	
 	<link rel="stylesheet" type="text/css" href="styles/style.css"/>
 </head>
@@ -15,20 +16,22 @@
 		<section data-bind="module: 'list'">
 
 			</section>
+
 	    <!-- bind map template with map module -->
 	    <section data-bind="module: 'map'">
 	    	
 	    	</section>
 
-		<!-- could not get conditioner working inside knockout templ -->
+		<!-- loads modules based on conditions - only scroll to element when width <= 48em -->
 		<div data-module="ui/ScrollToElement" data-conditions="media:{(max-width:48em)} and element:{was visible}">
+
 		<!-- data bind wikepedia template with wikepedia module -->
 			<section data-bind="module: 'wikipedia'"> 
 
 				</section>
 		</div>
     </main>
-	<footer role="contentinfo">
+	<footer role="contentinfo" class="js-footer">
 		<sub>Made by Joost S</sub>
 	</footer>
 	<!-- load require async -->

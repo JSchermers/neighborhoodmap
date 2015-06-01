@@ -4,9 +4,62 @@ define([
 	// call locally stored json file
 	"json!models/cities.json?callback=define",
 ], function (ko, data) {
-        //The data object will be the API response for the
-        //JSONP data call.
-       	
+
+        // input for validation according to knockout documentation
+       	ko.extenders.required = function(target, overrideMessage) {
+            
+            //add some sub-observables to our observable
+            target.hasError = ko.observable();
+            target.validationMessage = ko.observable();
+            target.novalidCity = ko.observable();
+            target.validCityMessage = ko.observable();
+
+            //define a function to do validation
+            function validate(newValue) {
+
+                 if (newValue) {
+                        // check if newvalue equals city name
+                        citiesViewModel.citiesList().every(function (city) {
+                            console.log(newValue);
+                            if (city.name() === newValue) {
+                                target.novalidCity(false);
+
+                                // set message to empty
+                                target.validCityMessage("");
+                                return false;
+                            }
+                            // check for empty string
+                            if (newValue === "") {
+                                target.novalidCity(false);
+                                target.validCityMessage("");
+                                return false;
+                            }
+
+
+                            else {
+                                target.novalidCity(true);
+
+                                // set message if text does not equal existing city
+                                target.validCityMessage("City does not exist");
+                                return true;
+                            }
+                        });
+                    }
+           
+                target.hasError(newValue ? false : true);
+
+                // set message if string is empty
+                target.validationMessage(newValue ? "" : overrideMessage || "This field is required");
+            }
+
+        //validate whenever the value changes
+        target.subscribe(validate);
+
+        //return the original observable
+        return target;
+        };
+
+
        	// create observable object
         var City = function (data) {
     		this.name = ko.observable(data.name);
@@ -18,12 +71,11 @@ define([
     	var citiesViewModel = {
     		citiesList : ko.observableArray([]),
             googleMapPoints : ko.observableArray([]),     
-            cityName : ko.observable(),		
+            cityName : ko.observable().extend({ required: "Please enter a city name" })
 		};
 
 		citiesViewModel.sendCity = function sendCity () {
 				var city = citiesViewModel.cityName();
-				citiesViewModel.cityName("");
 				return city;			
 		}; 
 

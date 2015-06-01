@@ -13,6 +13,7 @@ define([
 	return function WikiPediaViewModel () {
 		var self = this;
 		self.cityResults = ko.observableArray([]);
+		self.toggle = ko.observable("hide");
 
 		// subscribe to change in result model
 		result.cityname.subscribe(function (newValue) {
@@ -28,6 +29,8 @@ define([
 				// empty cityResults observable
 				self.cityResults([]);
 
+				self.toggle("hide");
+
 				// loop trough all items in array and create new object
 				arr[0].forEach(function (cityinfo) {
 
@@ -36,7 +39,9 @@ define([
 
 					// store CityInfo object in cityResults observable
 					self.cityResults.push(new CityInfo(cityinfo, url));
-					
+
+					self.toggle("show");
+
 				});
 			}
 		});

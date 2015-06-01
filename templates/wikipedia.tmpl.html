@@ -3,9 +3,9 @@
 <p data-bind="visible: cityResults().length === 0 ">
 	There is currently no data to display! <br /> Please click a marker on the google map!
 </p>
-<ul data-bind="foreach: cityResults" class="wikipedia-link-list">
+<ul data-bind="foreach: cityResults, css: toggle" class="wikipedia-link-list">
 	<li class="wikipedia-link-list__item">
 		<a data-bind="attr: { href: url, title: title}" target="_blank"><span data-bind="text: title"></span></a>
 	</li>
 </ul>
-<a data-bind="visible: cityResults().length > 0" class="return-to-input" href="#search-input">return to search</a>
+<a data-bind="visible: cityResults().length > 0" class="return-to-input" href="#search-input">return to search ></a>

@@ -56,12 +56,13 @@ label {
 	display: block;
 }
 
+/* accessability support styling */
 [role="tooltip"] {
 	background: orange;
 	color: white;
 	padding: .5em .6em;
 	display: none;
-	transition: all .8s;
+	transition: all .1s;
 }
 
 input:focus + [role="tooltip"] {
@@ -81,7 +82,6 @@ input:focus + [role="tooltip"] {
 	background-image: -webkit-linear-gradient(top,#4d90fe,#4787ed);
 	background-image: linear-gradient(top,#4d90fe,#4787ed);
 	border: 1px solid #3079ed;
-
 }
 
 [type="submit"] > span {
@@ -89,6 +89,7 @@ input:focus + [role="tooltip"] {
 	height: 28px;
 	background: url('../images/search-icon.png') no-repeat;
 	display: inline-block;
+	cursor: pointer;
 }
 
 .search-box {
@@ -103,6 +104,8 @@ input:focus + [role="tooltip"] {
 
 .city-table {
 	width: 100%;
+	border-spacing: 0;
+	margin-top: .5em;
 }
 
 .city-table th {
@@ -111,9 +114,75 @@ input:focus + [role="tooltip"] {
 
 [role=contentinfo] {
 	text-align: center;
-	margin-top: 2em;
 	color: orange;
 	font-weight: bold;
+}
+
+.wikipedia-link-list {
+	padding: 0;
+	margin: 0 1em 1em;
+	list-style: none;
+}
+
+.wikipedia-link-list__item::before {
+    content: "\2022";
+    color: #ff0000;
+    font-size: 1em;
+    display: inline-block;
+    margin-left: -1em;
+}
+
+.wikipedia-link-list__item > a {
+	display: inline-block;
+	width: 100%;
+	padding: .1em 0;
+}
+
+.hide {
+	opacity: 0;
+}
+
+.show {
+  -webkit-animation: fadeIn 3s forwards ; /* Safari 4+ */
+  -moz-animation:    fadeIn 3s forwards; /* Fx 5+ */
+  -o-animation:      fadeIn 3s forwards; /* Opera 12+ */
+  animation:         fadeIn 3s forwards; /* IE 10+, Fx 29+ */
+}
+
+@-webkit-keyframes fadeIn {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+@-moz-keyframes fadeIn {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+@-o-keyframes fadeIn {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes fadeIn {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+span + span {
+	display: block;
+}
+
+.error > input {
+	border: 1px solid darkred;
+}
+
+.error > button {
+	border: 1px solid #4d90fe;
+}
+.error input:focus {
+	outline: none;
+}
+
+.validation-message {
+	color: darkred;
 }
 
 @media screen and (min-width: 48em) {

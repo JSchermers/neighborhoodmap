@@ -4,11 +4,13 @@
 <!-- use submit to send the city -->
 <form method="post" role="search" role="search" data-bind="submit: sendCity">
 		<label for="search-input" id="search-input">Select a city</label>
-			<div class="search-box">		
-				<input type="text" list="cities-list" aria-describedby="cityname-hint" aria-controls="cities-list" data-bind="value: cityName" placeholder="find city" />
+		<span class="validation-message" role="alert" data-bind='visible: cityName.hasError, text: cityName.validationMessage'></span>
+		<span class="validation-message" role="alert" data-bind='visible: cityName.novalidCity, text: cityName.validCityMessage'></span>
+			<div class="search-box" data-bind="css: { error: cityName.hasError }">		
+				<input type="text" list="cities-list" aria-describedby="cityname-hint" aria-controls="cities-list" data-bind='textInput: cityName, valueUpdate: ['afterkeydown', 'autocomplete']' placeholder="find city" aria-required="true"/>
 				<div role="tooltip" id="cityname-hint">for displaying on google map and connecting to wikipedia</div>	
 			<button type="submit" aria-label="search neighbourhood"><span></span></button>
-		</div>
+		</div>	 	
 	<!-- autocomplete -->
 	<datalist id="cities-list" data-bind='foreach: citiesList'>
 		<option data-bind="value: name"></option>
