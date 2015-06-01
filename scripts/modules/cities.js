@@ -22,21 +22,18 @@ define([
                         citiesViewModel.citiesList().every(function (city) {
                             console.log(newValue);
                             if (city.name() === newValue) {
+
+                                // hide error message
                                 target.novalidCity(false);
 
                                 // set message to empty
                                 target.validCityMessage("");
                                 return false;
                             }
-                            // check for empty string
-                            if (newValue === "") {
-                                target.novalidCity(false);
-                                target.validCityMessage("");
-                                return false;
-                            }
-
-
+ 
                             else {
+
+                                // show error message
                                 target.novalidCity(true);
 
                                 // set message if text does not equal existing city
@@ -45,7 +42,8 @@ define([
                             }
                         });
                     }
-           
+                
+                // show error message
                 target.hasError(newValue ? false : true);
 
                 // set message if string is empty
