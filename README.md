@@ -12,7 +12,7 @@ I wanted to keep everything in a modular way. Which i had never done before. I h
 
 * npm install -g requirejs
 * r.js -o build.js (everything is copied and some are merged as well)
-* index.html allready set to '/dist' 
+* start local webserver from dist to see it working with minified files as well
 
 ## uses
 
@@ -25,7 +25,7 @@ I wanted to keep everything in a modular way. Which i had never done before. I h
 
 ## doesn't use
 
-* jquery (just wanted to try without)
+* jquery (just wanted to try without, it doesn't make it easier though)
 
 ## tested in
 
@@ -33,10 +33,9 @@ I wanted to keep everything in a modular way. Which i had never done before. I h
 * chrome
 * firefox
 
-## TO DO 
+## To make it even better, because it can always be better... sigh
 
 * better error handling
-* try r.js
 * use kockout components instead of amd-helper
 * set focus on onclick return to search
 * find out to to know when all views have loaded so i can skip the settimeout in requireconfig for conditionerjs
