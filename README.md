@@ -3,13 +3,25 @@ project 5 from udacity course.
 
 I wanted to keep everything in a modular way. Which i had never done before. I had heard of require so i wanted to give it a go. Then i needed a way to couple view to module with knockout, which knockout-amd-helpers solve.
 
+## to run
+
+* download project
+* start local webserver from root, i used python -m http.server
+
+## to minify use
+
+* npm install -g requirejs
+* r.js -o build.js (everything is copied and some are merged as well)
+* index.html allready set to '/dist' 
 
 ## uses
 
 * require
-* knockout-amd-helpers
+* knockout-amd-helpers (to be compatible with require and seperating code)
 * json
 * async
+* conditionerjs (conditionally load modules)
+* r.js (require way of minifying stuff)
 
 ## doesn't use
 
@@ -27,3 +39,4 @@ I wanted to keep everything in a modular way. Which i had never done before. I h
 * try r.js
 * use kockout components instead of amd-helper
 * set focus on onclick return to search
+* find out to to know when all views have loaded so i can skip the settimeout in requireconfig for conditionerjs

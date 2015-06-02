@@ -19,7 +19,11 @@ requirejs.config({
     }
 });
 
-require(["knockout", "modules/main","conditioner", "knockout-template"], function (ko, App, conditioner) {
+// added for require optimizer 
+
+require(["infrastructure"], function () {
+    
+    require(["knockout", "modules/main","conditioner", "knockout-template"], function (ko, App, conditioner) {
     /* look for modules here */
     ko.bindingHandlers.module.baseDir = "modules";
 
@@ -27,17 +31,20 @@ require(["knockout", "modules/main","conditioner", "knockout-template"], functio
 
     /* set amd defaults */
     ko.amdTemplateEngine.defaultPath = "../templates";
-	ko.amdTemplateEngine.defaultSuffix = ".tmpl.html";
-	ko.amdTemplateEngine.defaultRequireTextPluginName = "require-text";
+    ko.amdTemplateEngine.defaultSuffix = ".tmpl.html";
+    ko.amdTemplateEngine.defaultRequireTextPluginName = "require-text";
 
     setTimeout(function () {
         ko.applyBindings(new App());
         // initialize conditioner
       }, 0);
-
+    
     setTimeout(function () {
         conditioner.init();
     }, 300);
 
 
 });
+
+});
+
