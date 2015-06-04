@@ -20,7 +20,7 @@ define([
                  if (newValue) {
                         // check if newvalue equals city name
                         citiesViewModel.citiesList().every(function (city) {
-                            console.log(newValue);
+       
                             if (city.name() === newValue) {
 
                                 // hide error message
@@ -57,12 +57,12 @@ define([
         return target;
         };
 
-
        	// create observable object
         var City = function (data) {
     		this.name = ko.observable(data.name);
     		this.lat = ko.observable(data.lat);
     		this.lon = ko.observable(data.lon);
+            this.coatOfArms = ko.observable(data.url);
         };
 
         // viewmodel module literal while no new instances are needed, just return the object
@@ -88,6 +88,3 @@ define([
 		alert (error);
     }
 );
-
-
-

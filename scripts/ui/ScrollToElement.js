@@ -28,7 +28,6 @@ define(function () {
         var scroll = this.getOffsetRect(element);
         // scroll to element
         window.scroll(scroll.left, scroll.top);
-        console.log(scroll.left, scroll.top);
     };
 
     // get position on page

@@ -8,7 +8,7 @@ define([
        	
         // found in js fiddle how to create a map with knockout http://jsfiddle.net/t9wcC/
         // Point object for storing cityname , lat, lon + markers with events
-        function Point (name, lat, lon, mapObj) {
+        function Point (name, lat, lon, coat_of_arms, mapObj ) {
             var self = this;
             this.name = name;
             this.lat = ko.observable(lat);
@@ -18,8 +18,9 @@ define([
                 position: new google.maps.LatLng(lat, lon),
                 title: name,
                 map: mapObj,
+                icon: coat_of_arms,
                 animation: google.maps.Animation.DROP,
-                draggable: true
+                draggable: false
                });
 
             // set id to reference it for adding customEvent
@@ -36,27 +37,7 @@ define([
                 var map = marker.map;
                 return map;
             };
-
-    /*        //if you need the poition while dragging
-            google.maps.event.addListener(marker, 'drag', function() {
-                var pos = marker.getPosition();
-                this.lat(pos.lat());
-                this.lon(pos.lng());
-            }.bind(this));
-
-            //if you just need to update it when the user is done dragging
-            google.maps.event.addListener(marker, 'dragend', function() {
-                var pos = marker.getPosition();
-                this.lat(pos.lat());
-                this.lon(pos.lng());
-            }.bind(this));  
-
-            google.maps.event.addListener(marker, 'mouseover', function() {
-                var pos = marker.getPosition();
-                this.lat(pos.lat());
-                this.lon(pos.lng());
-            }.bind(this));   */
-
+   
             google.maps.event.addListener(marker, 'click', function() {
                 // get current clicked title and send it to wikipedia
                 var title = marker.title;

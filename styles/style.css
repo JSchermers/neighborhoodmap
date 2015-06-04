@@ -135,7 +135,7 @@ input:focus + [role="tooltip"] {
 .wikipedia-link-list__item > a {
 	display: inline-block;
 	width: 100%;
-	padding: .1em 0;
+	padding: .2em 0;
 }
 
 .hide {

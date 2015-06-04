@@ -31,8 +31,8 @@ define([
 		// if city equals old value do nothing
 		if (city === oldValue) {
 
-			// do somethin when element is clicked twice
-			console.log("you have previously clicked this " + city + " marker");
+			// do something when element is clicked twice
+			console.log("you have allready clicked this " + city + " marker");
 		}
 
 		// if city contains new value
@@ -46,8 +46,7 @@ define([
 
 				// populate observables
 				result.citydata([data]);
-				result.cityname(city);
-				
+				result.cityname(city);				
 			}
 
 			else {

@@ -5,52 +5,62 @@
 		{
 			"name": "Gouda",
 			"lat": 52.011521,
-			"lon": 4.710463 
+			"lon": 4.710463,
+			"url": "/images/coat_of_arms/Wapen_van_Gouda.svg.png" 
 		},
 		{
-			"name": "Waddinxveen",
-			"lat": 52.031297,
-			"lon": 4.659132 
+			"name": "Breda",
+			"lat": 51.58307,
+			"lon": 4.776950,
+			"url": "/images/coat_of_arms/Breda_wapen.svg.png"  
 		},
 		{
 			"name": "Rotterdam",
 			"lat": 51.924420,
-			"lon": 4.477733 
+			"lon": 4.477733,
+			"url": "/images/coat_of_arms/Rotterdam_wapen.svg.png" 
 		},
 		{
 			"name": "Utrecht",
 			"lat": 52.090737,
-			"lon": 5.121420 
+			"lon": 5.121420,
+			"url": "/images/coat_of_arms/Utrecht_gemeente_wapen.svg.png"  
 		},
 		{
 			"name": "Amsterdam",
 			"lat": 52.370216,
-			"lon": 4.895168 
+			"lon": 4.895168,
+			"url": "/images/coat_of_arms/Wapen_van_Amsterdam.svg.png" 
 		},
 		{
 			"name": "Groningen",
 			"lat": 53.219383,
-			"lon": 6.566502 
+			"lon": 6.566502,
+			"url": "/images/coat_of_arms/Groningen_stad_wapen.svg.png"			
 		},
 		{
 			"name": "Eindhoven",
 			"lat": 51.441642,
-			"lon": 5.469722 
+			"lon": 5.469722,
+			"url": "/images/coat_of_arms/Eindhoven_wapen.svg.png"
 		},
 		{
 			"name": "Almelo",
 			"lat": 52.367027,
-			"lon": 6.668492 
+			"lon": 6.668492,
+			"url": "/images/coat_of_arms/Almelo_wapen.svg.png"
 		},
 		{
 			"name": "Almere",
 			"lat": 52.350785,
-			"lon": 5.264702 
+			"lon": 5.264702,
+			"url": "/images/coat_of_arms/Almere_wapen.svg.png"
 		},
 		{
 			"name": "Middelburg",
 			"lat": 51.498796,
-			"lon": 3.610998 
+			"lon": 3.610998,
+			"url": "/images/coat_of_arms/Coat_of_arms_of_Middelburg.svg.png"
 		}
 	]
 }

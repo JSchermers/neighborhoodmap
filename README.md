@@ -11,7 +11,7 @@ I wanted to keep everything in a modular way. Which i had never done before. I h
 ## to minify use
 
 * npm install -g requirejs
-* r.js -o build.js (everything is copied and some are merged as well)
+* r.js -o build.js (everything is copied and some are merged as well), or r.js.cmd -o build.js
 * start local webserver from dist to see it working with minified files as well
 
 ## uses

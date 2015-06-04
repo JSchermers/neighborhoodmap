@@ -40,7 +40,7 @@ define([
 					citiesViewModelMap.citiesList().forEach(function (city) {
 						
 						// create new markers on the map
-						citiesViewModelMap.googleMapPoints.push(new Point(city.name(), city.lat(), city.lon(), self.mapObj.googleMap));
+						citiesViewModelMap.googleMapPoints.push(new Point(city.name(), city.lat(), city.lon(), city.coatOfArms(), self.mapObj.googleMap));
 						
 					});
 			        				
@@ -74,7 +74,7 @@ define([
 										citiesViewModelMap.googleMapPoints([]);					
 	    							});
     							// set new google marker object in array
-								citiesViewModelMap.googleMapPoints.push(new Point(city.name(), city.lat(), city.lon(), mapObj.googleMap));
+								citiesViewModelMap.googleMapPoints.push(new Point(city.name(), city.lat(), city.lon(), city.coatOfArms(), mapObj.googleMap));
 								
 								}
 							});
