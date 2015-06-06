@@ -7,33 +7,43 @@
 	<link rel="stylesheet" type="text/css" href="styles/style.css"/>
 </head>
 <body>
-	<!-- bind header template with header module -->
-    <header role="banner" class="" data-bind="module: 'header'"></header>
-    
-    <main role="main">
+	<!-- loader -->
+	<div class="requirejs-loading-panel" aria-role="alert" aria-hidden="false" aria-describedby="loading-files">
+		<div class="is-centered">
+			<span class="requirejs-loading-panel--text" id="loading-files">Loading files<span>
+			<progress value="0" max="100" class="progress-loader"/>
+		</div>	
+	</div>
+	
+	<div class="show-when-files-loaded">
+		<!-- bind header template with header module -->
+	    <header role="banner" class="" data-bind="module: 'header'"></header>
+	    
+	    <main role="main">
 
-		<!-- list containing all the data objects -->
-		<section data-bind="module: 'list'">
-
-			</section>
-
-	    <!-- bind map template with map module -->
-	    <section data-bind="module: 'map'">
-	    	
-	    	</section>
-
-		<!-- loads modules based on conditions - only scroll to element when width <= 48em -->
-		<div data-module="ui/ScrollToElement" data-conditions="media:{(max-width:48em)} and element:{was visible}">
-
-		<!-- data bind wikepedia template with wikepedia module -->
-			<section data-bind="module: 'wikipedia'"> 
+			<!-- list containing all the data objects -->
+			<section data-bind="module: 'list'">
 
 				</section>
-		</div>
-    </main>
-	<footer role="contentinfo" class="js-footer">
-		<sub>Made by Joost S</sub>
-	</footer>
+
+		    <!-- bind map template with map module -->
+		    <section data-bind="module: 'map'">
+		    	
+		    	</section>
+
+			<!-- loads modules based on conditions - only scroll to element when width <= 48em -->
+			<div data-module="ui/ScrollToElement" data-conditions="media:{(max-width:48em)} and element:{was visible}">
+
+			<!-- data bind wikepedia template with wikepedia module -->
+				<section data-bind="module: 'wikipedia'"> 
+
+					</section>
+			</div>
+	    </main>
+		<footer role="contentinfo" class="js-footer">
+			<sub>Made by Joost S</sub>
+		</footer>
+	</div>
 	<!-- load require async -->
 	<script type="text/javascript" data-main="scripts/require-config" src="scripts/require.js" async></script>
 </body>

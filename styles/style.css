@@ -25,8 +25,58 @@ input {
 	border-right: 0;
 	border-bottom: 1px solid #d8d8d8;
 	border-left: 1px solid #d8d8d8;
-	padding: 0.44em;
+	padding: 0.48em;
 	color: #999;
+}
+
+/* target webkit browsers */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+	input {
+		padding: 0.42em;
+	}
+}
+
+/* style progress element for different browsers 
+https://css-tricks.com/html5-progress-element/ */
+progress[value] {
+	/* Reset the default appearance */
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	  
+	/* Get rid of default border in Firefox. */
+	border: none;
+
+	color: blue; 
+
+	/* Dimensions */
+	width: 10em;
+	height: 1.5em;
+}
+
+progress[value]::-webkit-progress-value {
+    background-image:
+		-webkit-linear-gradient(
+		    -45deg, transparent 33%, rgba(0, 0, 0, .1) 33%, rgba(0,0, 0, .1) 66%, transparent 66%),
+		-webkit-linear-gradient(
+			top, rgba(255, 255, 255, .25), rgba(0, 0, 0, .25)),
+		-webkit-linear-gradient(
+			left, #4d90fe, #4787ed);
+
+    border-radius: 2px; 
+    background-size: 1.5em 1.5em, 100% 100%, 100% 100%; 
+}
+
+progress[value]::-moz-progress-bar { 
+	background-image:
+		-moz-linear-gradient(
+		    135deg, transparent 33%, rgba(0, 0, 0, 0.1) 33%, rgba(0, 0, 0, 0.1) 66%, transparent 66% ),
+		-moz-linear-gradient(
+		    top, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.25)),
+		-moz-linear-gradient(left, #4d90fe, #4787ed );
+
+	border-radius: 2px; 
+	background-size: 1.5em 1.5em, 100% 100%, 100% 100%; 
 }
 
 h1, h2, h3 {
@@ -54,6 +104,10 @@ form {
 
 label {
 	display: block;
+}
+
+tr:nth-child(even) td {
+	background-color: #ebebeb;
 }
 
 /* accessability support styling */
@@ -106,6 +160,8 @@ input:focus + [role="tooltip"] {
 	width: 100%;
 	border-spacing: 0;
 	margin-top: .5em;
+	padding: 0;
+	margin: 0;
 }
 
 .city-table th {
@@ -185,11 +241,48 @@ span + span {
 	color: darkred;
 }
 
+.requirejs-loading-panel {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background: rgba(0, 0, 0, .1);
+	opacity: 1;
+	transition: all 1s;
+}
+
+.is-centered {
+	width: 48%;
+	margin: auto;
+	position: absolute;
+	top: 50%; left: 50%;
+	-webkit-transform: translate(-50%,-50%);
+	-ms-transform: translate(-50%,-50%);
+	transform: translate(-50%,-50%);
+	z-index: 9999;
+	text-align: center;
+}
+
+.requirejs-loading-panel--text {
+	display: block;
+}
+
+.show-when-files-loaded {
+	opacity: 0;
+	transition: all 2s;
+
+}
+
 @media screen and (min-width: 48em) {
 	/* some styling styling for wider screen display: No need for grid system like bootstrap; */
 	main {
 		overflow: hidden;
 		position: relative;
+	}
+
+	progress[value] {
+		width: 12em;
 	}
 
 	main > section, main > div[data-processed=true] {

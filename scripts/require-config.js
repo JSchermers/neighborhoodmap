@@ -19,32 +19,34 @@ requirejs.config({
     }
 });
 
-// added for require optimizer 
+// added for load event to view info while loading
+require(["onResourceLoad"], function () {
 
-require(["infrastructure"], function () {
-    
-    require(["knockout", "modules/main","conditioner", "knockout-template"], function (ko, App, conditioner) {
-    /* look for modules here */
-    ko.bindingHandlers.module.baseDir = "modules";
+    // added for require optimizer 
+    require(["infrastructure"], function () {
+        
+        require(["knockout", "modules/main","conditioner", "knockout-template"], function (ko, App, conditioner) {
+        /* look for modules here */
+        ko.bindingHandlers.module.baseDir = "modules";
 
-    ko.bindingHandlers.module.templateProperty = "embeddedTemplate";
+        ko.bindingHandlers.module.templateProperty = "embeddedTemplate";
 
-    /* set amd defaults */
-    ko.amdTemplateEngine.defaultPath = "../templates";
-    ko.amdTemplateEngine.defaultSuffix = ".tmpl.html";
-    ko.amdTemplateEngine.defaultRequireTextPluginName = "require-text";
+        /* set amd defaults */
+        ko.amdTemplateEngine.defaultPath = "../templates";
+        ko.amdTemplateEngine.defaultSuffix = ".tmpl.html";
+        ko.amdTemplateEngine.defaultRequireTextPluginName = "require-text";
 
-    setTimeout(function () {
-        ko.applyBindings(new App());
-        // initialize conditioner
-      }, 0);
-    
-    setTimeout(function () {
-        conditioner.init();
-    }, 300);
+        setTimeout(function () {
+            ko.applyBindings(new App());
+            // initialize conditioner
+          }, 0);
+        
+        setTimeout(function () {
+            conditioner.init();
+        }, 300);
 
 
+        });
+
+    });
 });
-
-});
-
