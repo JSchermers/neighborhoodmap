@@ -166,6 +166,7 @@ input:focus + [role="tooltip"] {
 
 .city-table th {
 	text-align: left;
+	color: orange;
 }
 
 [role=contentinfo] {
@@ -271,7 +272,6 @@ span + span {
 .show-when-files-loaded {
 	opacity: 0;
 	transition: all 2s;
-
 }
 
 @media screen and (min-width: 48em) {
