@@ -86,6 +86,10 @@ h1, h2, h3 {
 	color: darkblue;
 }
 
+h1 {
+	margin-top: 0;
+}
+
 a:link, a:visited {
 	color: #3079ed;
 }
@@ -104,6 +108,16 @@ form {
 
 label {
 	display: block;
+}
+
+header {
+	border-bottom: 1px solid #efefef;
+	padding-bottom: 2em;
+}
+
+footer {
+	border-top: 1px solid #efefef;
+	padding-top: 1em;
 }
 
 tr:nth-child(even) td {
@@ -177,8 +191,14 @@ input:focus + [role="tooltip"] {
 
 .wikipedia-link-list {
 	padding: 0;
-	margin: 0 1em 1em;
+	margin: 0 0em 1em;
 	list-style: none;
+}
+
+.wikipedia-link-list__item {
+	position: relative;
+	padding-left: .6em;
+
 }
 
 .wikipedia-link-list__item::before {
@@ -186,8 +206,12 @@ input:focus + [role="tooltip"] {
     color: #ff0000;
     font-size: 1em;
     display: inline-block;
-    margin-left: -1em;
+    margin-left: 0em;
+    position: absolute;
+    top: .2em;
+    left: 0;
 }
+
 
 .wikipedia-link-list__item > a {
 	display: inline-block;
@@ -274,8 +298,20 @@ span + span {
 	transition: all 2s;
 }
 
+@media screen and (min-width: 32em) {
+	.wikipedia-link-list {
+		-moz-column-count: 2;
+		-webkit-column-count: 2;
+		column-count: 2;
+	}
+}
+
 @media screen and (min-width: 48em) {
 	/* some styling styling for wider screen display: No need for grid system like bootstrap; */
+	.wrapper {
+
+	}
+
 	main {
 		overflow: hidden;
 		position: relative;
@@ -283,14 +319,6 @@ span + span {
 
 	progress[value] {
 		width: 12em;
-	}
-
-	main > section, main > div[data-processed=true] {
-		float: right;
-		width: 31.33%;
-		vertical-align: top;
-		text-align: left;
-		margin-right: 2%;
 	}
 
 	.google-map {
@@ -308,4 +336,32 @@ span + span {
 	.google-map-link {
 		display: none;
 	}
+
+	.wikipedia-link-list {
+		-moz-column-count: 3;
+		-webkit-column-count: 3;
+		column-count: 3;
+	}
+}
+
+@media screen and (min-width: 50em) {
+	.wrapper {
+		margin: 0 auto;
+		max-width: 60em;
+	}
+	.grid-span1of1 {
+		width: 100%;
+		clear: both;	
+		overflow: hidden;
+	}
+
+	.grid-span1of2 {
+		width: calc(50% - 1em);
+		float: left;
+	}
+
+	.grid-span1of2:first-of-type {
+		margin-right: 2em;
+	}
+
 }
